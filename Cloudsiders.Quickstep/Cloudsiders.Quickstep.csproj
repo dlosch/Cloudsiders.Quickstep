@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <!--<TargetFramework>net5.0</TargetFramework>-->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Configurations>Debug;Release;FasterLatestDebug;FasterLatestRelease</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <FasterLatest>false</FasterLatest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <FasterLatest>false</FasterLatest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'FasterLatestDebug' ">
+    <FasterLatest>true</FasterLatest>
+    <DefineConstants>FASTER_LATEST</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'FasterLatestRelease' ">
+    <FasterLatest>true</FasterLatest>
+    <DefineConstants>FASTER_LATEST</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.FASTER.Core" Version="1.9.3"  Condition="!$(FasterLatest)" />
+    <PackageReference Include="Microsoft.Orleans.OrleansProviders" Version="3.4.2" />
+    <PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.4.2" />
+    <PackageReference Include="System.Threading.Channels" Version="5.0.0" />
+    <!--20210413 in order for the types in assembly to be available for Orleans serializer, has to reference code and this CodeGen! -->
+    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.4.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.4.2" />
+
+  </ItemGroup>
+
+  <ItemGroup Condition="$(FasterLatest)">
+    <ProjectReference Include="..\..\..\GITHUB\FASTER\cs\src\core\FASTER.core.csproj" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <Orleans_CodeGenInputs Remove="Serialization\BinaryTokenStreamReader3.cs" />
+  </ItemGroup>-->
+
+</Project>
