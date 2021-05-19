@@ -61,13 +61,10 @@ namespace Cloudsiders.Quickstep {
 
             var baseToken = _sequenceToken as EventSequenceTokenV2 ?? new EventSequenceTokenV2(Sequence);
             return Events?.OfType<T>().Select((e, i) => Tuple.Create<T, StreamSequenceToken>(e, baseToken.CreateSequenceTokenForEvent(i)));
-            // todo 20200217 implementierung fehlt
-            throw new NotImplementedException();
         }
 
         public bool ImportRequestContext() {
             if (null != RequestContext) {
-                // todo 20210413 implementierung fehlt
                 RequestContextExtensions.Import(RequestContext);
             }
 

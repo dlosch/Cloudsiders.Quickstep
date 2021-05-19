@@ -320,7 +320,6 @@ namespace Cloudsiders.Quickstep {
 
                     _shouldInitPumpTask = false;
 
-                    // todo 202004 HIGH this may actually initi the pumpTask multiple times
                     return Task.Factory.StartNew(async () => {
                         _pumpTask = MessagePump(_scanIteratorCancellationTokenSource.Token);
                         await _pumpTask;

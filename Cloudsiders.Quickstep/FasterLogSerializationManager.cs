@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using Orleans.Serialization;
 
 namespace Cloudsiders.Quickstep {
-    // this class has a rather looong git history :)
     public class FasterLogSerializationManager {
         private readonly ILogger<FasterLogSerializationManager> _logger;
         private readonly SerializationManager _serializationManager;
