@@ -112,7 +112,7 @@ namespace Cloudsiders.Quickstep.Serialization {
             throw new NotImplementedException();
         }
 
-        // todo HIGH virtual cannot be inlined / do not use interface
+        // todo HIGH virtual cannot be inlined / do not use interface ... ??
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override void Write(ReadOnlySpan<byte> value) {
             //// Fast path, try copying to the current buffer.
