@@ -11,13 +11,13 @@ Simple adapter for Orleans streaming, based on SQS adapter.
 
 ### Configuration
 
->
-> "FasterLogAdapterOptions": {
->         "LogFile": "f:\\temp\\orleans.log",
->         "LogSegmentSizeBits": 26,
->         "UsePersistentLog": true,
->         "PreallocateLogFile": true,
->         "CommitPeriodMillis": 1000,
-v         "UseWatermarkForCommits": true
->       }
->
+```json
+ "FasterLogAdapterOptions": {
+         "LogFile": "f:\\temp\\orleans.log",
+         "LogSegmentSizeBits": 26,
+         "UsePersistentLog": true,
+         "PreallocateLogFile": true,
+         "CommitPeriodMillis": 1000,
+         "UseWatermarkForCommits": true
+       }
+```
